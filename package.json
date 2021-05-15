@@ -1,0 +1,19 @@
+{
+  "name": "linkedin-exporter",
+  "version": "0.9.9",
+  "description": "A multi plattform desktop app, to export your profile info as a json",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/jarivas/linkedin-exporter",
+  "keywords": [
+    "Electron",
+    "linkedin",
+  ],
+  "license": "GNU3",
+  "devDependencies": {
+    "electron": "^12.0.7"
+  },
+  "dependencies": {}
+}
