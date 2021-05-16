@@ -30,6 +30,6 @@ exports.start = (mainWindow, session) => {
     helper.session = session
 
     mainWindow.webContents.once('did-navigate', onLoggedIn)
-    mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 }
 
