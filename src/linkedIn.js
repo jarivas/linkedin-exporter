@@ -17,6 +17,7 @@ const options = {
     headers: headers
 }
 const profiles = new Map()
+let profilePicture
 
 fetch(apiUrl + "profileView", options)
     .then(response => response.json())
@@ -25,6 +26,9 @@ fetch(apiUrl + "profileView", options)
 async function processProfileMultiLanguage(profile) {
     const p = profile.profile
     const promises = []
+
+    profilePicture = p.profilePictureOriginalImage['com.linkedin.common.VectorImage'].rootUrl +
+        p.profilePictureOriginalImage['com.linkedin.common.VectorImage'].artifacts[0].fileIdentifyingUrlPathSegment
 
     for (let i = 0; i < p.supportedLocales.length; i++) {
         promises.push(process(p.supportedLocales[i].language, p.supportedLocales[i].country))
@@ -250,10 +254,11 @@ function processProfile(profile) {
     delete (profile.miniProfile)
     delete (profile.supportedLocales)
     delete (profile.versionTag)
-    delete (profile.profilePicture)
     delete (profile.profilePictureOriginalImage)
     delete (profile.showEducationOnProfileTopCard)
     delete (profile.location)
+
+    profile.profilePicture = profilePicture
 }
 
 async function processProfileContactInfo(profile, language, country) {
@@ -269,6 +274,10 @@ async function processProfileContactInfo(profile, language, country) {
             for (let i = 0; i < websites.length; ++i) {
                 delete(websites[i].type)
             }
+
+            delete info.primaryTwitterHandle.credentialId
+
+            delete info.twitterHandles
 
             profile.profileContactInfo = info
         })

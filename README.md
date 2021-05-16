@@ -152,7 +152,7 @@ If after the login, 10 - 20 seconds passed and nothing happens, close and open a
             "headline":"Fullstack developer, certified.NET and Java developer, and script languages lover",
             "summary":"Passionate for new cutting edge technology, open source spirited and everyday learner.",
             "industryName":"Internet",
-            "address":"Collinistrasse 5 0612, 68161 Mannheim",
+            "address":"Cdasfadsfasd",
             "locationName":"Malaga, Andalusia, Spain",
             "geoCountryName":"Spain",
             "firstName":"Jose",
@@ -337,13 +337,13 @@ If after the login, 10 - 20 seconds passed and nothing happens, close and open a
                   "url":"https://github.com/jarivas"
                }
             ],
-            "twitterHandles":[
-               
-            ],
+           "primaryTwitterHandle": {
+             "name": "ja_rivas"
+           },
             "phoneNumbers":[
                {
                   "type":"MOBILE",
-                  "number":"655010958"
+                  "number":"6465"
                }
             ],
             "ims":[
