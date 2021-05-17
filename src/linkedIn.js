@@ -34,7 +34,10 @@ async function processProfileMultiLanguage(profile) {
         promises.push(process(p.supportedLocales[i].language, p.supportedLocales[i].country))
     }
 
-    Promise.all(promises).then(download)
+    Promise.all(promises).then(() => {
+        downloadCV()
+        downloadProfilePicture()
+    })
 }
 
 async function process(l, c) {
@@ -257,8 +260,6 @@ function processProfile(profile) {
     delete (profile.profilePictureOriginalImage)
     delete (profile.showEducationOnProfileTopCard)
     delete (profile.location)
-
-    profile.profilePicture = profilePicture
 }
 
 async function processProfileContactInfo(profile, language, country) {
@@ -404,7 +405,22 @@ function mapToObj(map){
     return obj
 }
 
-function download() {
+function downloadProfilePicture() {
+    fetch(profilePicture)
+        .then(response => response.blob())
+        .then(blob => new Promise((resolve, reject) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'profile-picture.jpeg';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }))
+}
+
+function downloadCV() {
     const obj = {
         profiles: mapToObj(profiles)
     }
