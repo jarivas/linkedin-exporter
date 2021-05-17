@@ -260,6 +260,7 @@ function processProfile(profile) {
     delete (profile.profilePictureOriginalImage)
     delete (profile.showEducationOnProfileTopCard)
     delete (profile.location)
+    delete (profile.profilePicture)
 }
 
 async function processProfileContactInfo(profile, language, country) {
